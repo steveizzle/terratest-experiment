@@ -1,5 +1,5 @@
 resource "helm_release" "vault" {
-  name       = "vault"
+  name       = var.name
 
   repository = "https://helm.releases.hashicorp.com"
   chart      = "vault"
