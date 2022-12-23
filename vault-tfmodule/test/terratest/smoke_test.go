@@ -11,6 +11,8 @@ import (
 )
 
 func TestTerraformHelloWorldExample(t *testing.T) {
+
+	vaultName := "vault-test"
 	// Construct the terraform options with default retryable errors to handle the most common
 	// retryable errors in terraform testing.
 	terraformDir := os.Getenv("TF_DIR")
@@ -24,7 +26,7 @@ func TestTerraformHelloWorldExample(t *testing.T) {
 		// Set the path to the Terraform code that will be tested.
 		TerraformDir: terraformDir,
 		Vars: map[string]interface{}{
-			"vault_name": "vault-test",
+			"vault_name": vaultName,
 		},
 	})
 
@@ -36,7 +38,7 @@ func TestTerraformHelloWorldExample(t *testing.T) {
 
 	// Run `terraform output` to get the values of output variables and check they have the expected values.
 	// output := terraform.Output(t, terraformOptions, "hello_world")
-	k8s.WaitUntilPodAvailable(t, &k8s.KubectlOptions{Namespace: "Default"}, "vault-test-0", 2, time.Duration(time.Second))
+	k8s.WaitUntilPodAvailable(t, &k8s.KubectlOptions{Namespace: "Default"}, fmt.Sprintf("%s-0", vaultName), 4, time.Duration(time.Second*10))
 
 	fmt.Println("Clean up")
 
