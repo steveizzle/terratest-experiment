@@ -36,6 +36,14 @@ func TestTerraformHelloWorldExample(t *testing.T) {
 
 	// Run `terraform output` to get the values of output variables and check they have the expected values.
 	// output := terraform.Output(t, terraformOptions, "hello_world")
-	k8s.WaitUntilPodAvailable(t, &k8s.KubectlOptions{Namespace: "Default"}, "vault-0", 2, time.Duration(time.Second))
+	k8s.WaitUntilPodAvailable(t, &k8s.KubectlOptions{Namespace: "Default"}, "vault-test-0", 2, time.Duration(time.Second))
 
+	fmt.Println("Clean up")
+
+	terraformOptions = terraform.WithDefaultRetryableErrors(t, &terraform.Options{
+		// Set the path to the Terraform code that will be tested.
+		TerraformDir: terraformDir,
+	})
+
+	terraform.InitAndApply(t, terraformOptions)
 }
