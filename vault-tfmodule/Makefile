@@ -3,4 +3,4 @@ current_dir := $(notdir $(patsubst %/,%,$(dir $(mkfile_path))))
 
 tests:
 	@echo "Running tests for $(current_dir)"
-	(cd test/terratest && go test ./...)
+	(cd test/terratest && go test -v ./...)
