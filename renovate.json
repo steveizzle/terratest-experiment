@@ -2,18 +2,6 @@
   "labels": ["renovate"],
   "packageRules": [
     {
-      "updateTypes": ["major"],
-      "addLabels": ["major"]
-    },
-    {
-      "updateTypes": ["minor"],
-      "addLabels": ["minor"]
-    },
-    {
-      "updateTypes": ["patch"],
-      "addLabels": ["patch"]
-    },
-    {
       "datasources": ["docker","helm","terraform-provider"],
       "automerge": true,
       "ignoreTests": true,
