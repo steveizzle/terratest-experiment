@@ -2,7 +2,7 @@
   "labels": ["renovate"],
   "packageRules": [
     {
-      "datasources": ["docker","helm","terraform-provider"],
+      "datasources": ["docker","helm","terraform-module"],
       "automerge": true,
       "ignoreTests": true,
       "ignoreUnstable": true
