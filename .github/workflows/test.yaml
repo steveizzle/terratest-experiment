@@ -6,7 +6,7 @@ on:
 #     # string has to be quoted.
 #     - cron: '0/15 * * * *'
 env:
-  DAY_OF_WEEK: test-cluster-rancher
+  tf_actions_working_dir: test-cluster-rancher
 defaults:
   run:
     working-directory: ${{ env.tf_actions_working_dir }}
