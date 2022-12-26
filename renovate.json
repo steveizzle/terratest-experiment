@@ -15,8 +15,10 @@
     },
     {
       "datasources": ["docker","helm","terraform-provider"],
-      "updateTypes": ["patch","digest"],
-      "automerge": true
+      "updateTypes": ["patch","digest","minor","major"],
+      "automerge": true,
+      "ignoreTests": true,
+      "ignoreUnstable": true
     },
     {
       "matchManagers": [
