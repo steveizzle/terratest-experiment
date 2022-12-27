@@ -11,7 +11,7 @@
       "separateMajorMinor": false,
       "automerge": true,
       "ignoreTests": true,
-      "ignoreUnstable": true
+      "ignoreUnstable": false
     }
   ],
   "repositories": [
