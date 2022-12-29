@@ -1,14 +1,12 @@
 {
   "extends": ["config:base",":disableDependencyDashboard"],
   "labels": ["renovate"],
-  "enabled": true,
   "enabledManagers": ["terraform"],
   "packageRules": [
     {
       "matchManagers": ["terraform"],
       "automerge": true,
-      "ignoreTests": true,
-      "groupName": "Prod Updates"
+      "ignoreTests": true
     }
   ],
   "repositories": [
