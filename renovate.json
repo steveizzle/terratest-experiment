@@ -5,16 +5,17 @@
   "enabledManagers": ["terraform"],
   "packageRules": [
     {
-      "matchUpdateTypes": ["major","minor","patch"],
-      "matchPaths": ["prod-cluster/**"],
       "matchManagers": ["terraform"],
+      "matchPaths": ["prod-cluster/**"],
+      "matchUpdateTypes": ["major","minor","patch"],
+      "ignoreUnstable": true,
       "automerge": true,
       "ignoreTests": true,
       "groupName": "Prod Updates"
     },
     {
-      "matchPaths": ["test-cluster/**"],
       "matchManagers": ["terraform"],
+      "matchPaths": ["test-cluster/**"],
       "automerge": true,
       "ignoreTests": true,
       "ignoreUnstable": false,
