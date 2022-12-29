@@ -6,7 +6,6 @@
   "packageRules": [
     {
       "matchManagers": ["terraform"],
-      "matchPaths": ["prod-cluster/**"],
       "matchUpdateTypes": ["major","minor","patch"],
       "automerge": true,
       "ignoreTests": true,
