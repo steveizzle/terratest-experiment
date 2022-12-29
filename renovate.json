@@ -4,6 +4,7 @@
   "enabledManagers": ["terraform"],
   "packageRules": [
     {
+      "includePaths": ["test-cluster"],
       "matchManagers": [
         "terraform"
       ],
@@ -12,6 +13,17 @@
       "automerge": true,
       "ignoreTests": true,
       "ignoreUnstable": false
+    },
+    {
+      "includePaths": ["prod-cluster"],
+      "matchManagers": [
+        "terraform"
+      ],
+      "groupName": "Terraform-Modules",
+      "separateMajorMinor": false,
+      "automerge": true,
+      "ignoreTests": true,
+      "ignoreUnstable": true
     }
   ],
   "repositories": [
