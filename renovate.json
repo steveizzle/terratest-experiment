@@ -7,14 +7,18 @@
     {
       "matchUpdateTypes": ["major","minor","patch"],
       "matchPaths": ["prod-cluster/**"],
+      "matchManagers": ["terraform"],
       "automerge": true,
-      "ignoreTests": true
+      "ignoreTests": true,
+      "groupName": "Prod Updates"
     },
     {
       "matchPaths": ["test-cluster/**"],
+      "matchManagers": ["terraform"],
       "automerge": true,
       "ignoreTests": true,
-      "ignoreUnstable": false
+      "ignoreUnstable": false,
+      "groupName": "Test Updates"
     }
   ],
   "repositories": [
