@@ -5,6 +5,8 @@ on:
       - 'test-cluster/**'
     branches:
       - main
+  workflow_dispatch:
+    
 #   schedule:
 #     # The "*" (#42, asterisk) character has special semantics in YAML, so this
 #     # string has to be quoted.
@@ -31,8 +33,13 @@ jobs:
 
       - uses: actions/setup-go@v3
         with:
-          go-version: '^1.13.1' # The Go version to download (if necessary) and use.
-      - run: go version
+          go-version: '^1.13.1'
+      - run: go install github.com/gruntwork-io/terratest/cmd/terratest_log_parser@latest
+
+      - name: Debug
+        run: terratest_log_parser
+        if: always()
+
 
       - name: Install kubectl
         run: |
@@ -48,6 +55,3 @@ jobs:
         env: 
           TF_DIR: ${{ github.workspace }}/${{ env.tf_actions_working_dir }}
 
-      - name: Debug
-        run: kubectl describe pods
-        if: always()
