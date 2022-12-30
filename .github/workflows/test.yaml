@@ -36,11 +36,6 @@ jobs:
           go-version: '^1.13.1'
       - run: go install github.com/gruntwork-io/terratest/cmd/terratest_log_parser@latest
 
-      - name: Debug
-        run: terratest_log_parser
-        if: always()
-
-
       - name: Install kubectl
         run: |
           curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
@@ -55,3 +50,10 @@ jobs:
         env: 
           TF_DIR: ${{ github.workspace }}/${{ env.tf_actions_working_dir }}
 
+      - name: Test Report
+        uses: dorny/test-reporter@v1
+        if: success() || failure()    # run this step even if previous step failed
+        with:
+          name: Integration Tests            # Name of the check run which will be created
+          path: test-reports/*/*.xml    # Path to test results
+          reporter: java-junit       # Format of test results
