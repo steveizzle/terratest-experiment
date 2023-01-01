@@ -1,6 +1,6 @@
 #!/bin/bash
 
-INTEGRATION_TESTS="vault_module"
+INTEGRATION_TESTS="vault_module eso"
 
 echo "Installing dependencies"
 go install github.com/gruntwork-io/terratest/cmd/terratest_log_parser@latest
