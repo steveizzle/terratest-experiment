@@ -7,7 +7,6 @@
     {
       "matchManagers": ["terraform"],
       "matchPaths": ["prod-cluster/**"],
-      "matchUpdateTypes": ["major","minor","patch"],
       "ignoreUnstable": true,
       "automerge": true,
       "ignoreTests": true,
