@@ -12,7 +12,10 @@
         "terraform"
       ],
       "groupName": "Terraform-Modules",
-      "separateMajorMinor": false
+      "separateMajorMinor": false,
+      "automerge": true,
+      "ignoreTests": true,
+      "ignoreUnstable": true
     }
   ],
   "repositories": [
