@@ -6,11 +6,13 @@
     {
       "matchUpdateTypes": ["major","minor","patch"],
       "matchPaths": ["prod-cluster/**"],
+      "matchManagers": ["terraform"],
       "automerge": true,
       "ignoreTests": true
     },
     {
       "matchPaths": ["test-cluster/**"],
+      "matchManagers": ["terraform"],
       "automerge": true,
       "ignoreTests": true,
       "ignoreUnstable": false
