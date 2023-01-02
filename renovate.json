@@ -11,6 +11,7 @@
       "ignoreUnstable": false
     },
     {
+      "matchUpdateTypes": ["major","minor","patch"],
       "matchPaths": ["prod-cluster/**"],
       "separateMajorMinor": false,
       "automerge": true,
