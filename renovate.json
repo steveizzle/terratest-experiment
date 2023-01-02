@@ -4,16 +4,16 @@
   "enabledManagers": ["terraform"],
   "packageRules": [
     {
-      "matchPaths": ["test-cluster/**"],
-      "automerge": true,
-      "ignoreTests": true,
-      "ignoreUnstable": false
-    },
-    {
       "matchUpdateTypes": ["major","minor","patch"],
       "matchPaths": ["prod-cluster/**"],
       "automerge": true,
       "ignoreTests": true
+    },
+    {
+      "matchPaths": ["test-cluster/**"],
+      "automerge": true,
+      "ignoreTests": true,
+      "ignoreUnstable": false
     }
   ],
   "repositories": [
