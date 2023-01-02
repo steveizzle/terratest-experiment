@@ -1,12 +1,8 @@
 {
+  "extends": ["config:base"],
   "labels": ["renovate"],
+  "enabledManagers": ["terraform"],
   "packageRules": [
-    {
-      "datasources": ["docker","helm","terraform-module"],
-      "automerge": true,
-      "ignoreTests": true,
-      "ignoreUnstable": true
-    },
     {
       "matchManagers": [
         "terraform"
