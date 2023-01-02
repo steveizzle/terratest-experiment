@@ -15,9 +15,12 @@ jobs:
         working-directory: ${{ env.tf_actions_working_dir }}
     runs-on: ubuntu-latest
     steps:
-      - uses: hashicorp/setup-terraform@v2
+      - name: Checkout
+        uses: actions/checkout@v2.0.0
 
+      - uses: hashicorp/setup-terraform@v2
       - run: terraform init
+      
       - uses: actions/setup-go@v3
         with:
           go-version: '^1.13.1' # The Go version to download (if necessary) and use.
