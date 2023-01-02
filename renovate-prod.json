@@ -6,7 +6,6 @@
   "packageRules": [
     {
       "matchManagers": ["terraform"],
-      "matchUpdateTypes": ["major","minor","patch"],
       "automerge": true,
       "ignoreTests": true,
       "groupName": "Prod Updates"
