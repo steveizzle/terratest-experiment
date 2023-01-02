@@ -4,7 +4,7 @@
   "enabledManagers": ["terraform"],
   "packageRules": [
     {
-      "includePaths": ["test-cluster"],
+      "matchPaths": ["test-cluster"],
       "matchManagers": [
         "terraform"
       ],
@@ -15,7 +15,7 @@
       "ignoreUnstable": false
     },
     {
-      "includePaths": ["prod-cluster"],
+      "matchPaths": ["prod-cluster"],
       "matchManagers": [
         "terraform"
       ],
