@@ -1,0 +1,58 @@
+apiVersion: infra.contrib.fluxcd.io/v1alpha1
+kind: Terraform
+metadata:
+  name: tf-experiment
+  namespace: flux-system
+spec:
+  interval: 1m
+  approvePlan: auto
+  path: ./prod-cluster
+  fileMappings:
+    - location: "home"
+      path: ".kube/config"
+      secretRef:
+        name: kubeconfig-tf
+        key: kubeconfig
+    - location: "home"
+      path: ".ssh/id_rsa"
+      secretRef:
+        name: deploy-key-tf
+        key: id_ecdsa
+    - location: "home"
+      path: ".ssh/known_hosts"
+      secretRef:
+        name: deploy-key-tf
+        key: known_hosts
+
+  sourceRef:
+    kind: GitRepository
+    name: tf-experiment
+    namespace: default
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: GitRepository
+metadata:
+  name: tf-experiment
+  namespace: default
+spec:
+  gitImplementation: go-git
+  interval: 1m0s
+  ref:
+    branch: main
+  secretRef:
+    name: tf-experiment
+  timeout: 60s
+  url: ssh://git@github.com/steveizzle/terratest-experiment
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: tf-runner
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+- kind: ServiceAccount
+  name: tf-runner
+  namespace: flux-system
