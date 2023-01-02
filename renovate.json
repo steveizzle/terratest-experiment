@@ -2,7 +2,6 @@
   "extends": ["config:base",":disableDependencyDashboard"],
   "labels": ["renovate"],
   "enabledManagers": ["terraform"],
-  "matchManagers": ["terraform"],
   "packageRules": [
     {
       "matchPaths": ["test-cluster/**"],
