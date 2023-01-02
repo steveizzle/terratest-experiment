@@ -7,11 +7,12 @@ on:
 #     - cron: '0/15 * * * *'
 env:
   tf_actions_working_dir: test-cluster-rancher
-defaults:
-  run:
-    working-directory: ${{ env.tf_actions_working_dir }}
+
 jobs:
   test:
+    defaults:
+      run:
+        working-directory: ${{ env.tf_actions_working_dir }}
     runs-on: ubuntu-latest
     steps:
       - uses: hashicorp/setup-terraform@v2
