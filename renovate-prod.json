@@ -1,0 +1,19 @@
+{
+  "extends": ["config:base",":disableDependencyDashboard"],
+  "labels": ["renovate"],
+  "enabled": true,
+  "enabledManagers": ["terraform"],
+  "packageRules": [
+    {
+      "matchManagers": ["terraform"],
+      "matchPaths": ["prod-cluster/**"],
+      "matchUpdateTypes": ["major","minor","patch"],
+      "automerge": true,
+      "ignoreTests": true,
+      "groupName": "Prod Updates"
+    }
+  ],
+  "repositories": [
+    "steveizzle/terratest-experiment"
+  ]
+}
