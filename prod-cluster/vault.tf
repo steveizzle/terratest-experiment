@@ -1,4 +1,4 @@
 module "vault_module" {
-  source = "git::ssh://git@github.com/steveizzle/vault-tfmodule.git?ref=v0.0.7-rc1"
+  source = "git::ssh://git@github.com/steveizzle/vault-tfmodule.git?ref=v0.0.7-rc3"
   name = "vault-prod"
 }
