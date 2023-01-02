@@ -37,4 +37,4 @@ jobs:
         run: ./run_tests.sh
         shell: sh
         env: 
-          TF_DIR: ${{ env.GITHUB_WORKSPACE }}/${{ env.tf_actions_working_dir }}
+          TF_DIR: ${{ github.workspace }}/${{ env.tf_actions_working_dir }}
