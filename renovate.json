@@ -1,0 +1,33 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "labels": ["renovate"],
+  "packageRules": [
+    {
+      "updateTypes": ["major"],
+      "addLabels": ["major"]
+    },
+    {
+      "updateTypes": ["minor"],
+      "addLabels": ["minor"]
+    },
+    {
+      "updateTypes": ["patch"],
+      "addLabels": ["patch"]
+    },
+    {
+      "datasources": ["docker","helm","terraform-provider"],
+      "updateTypes": ["patch","digest"],
+      "automerge": true
+    },
+    {
+      "matchManagers": [
+        "terraform"
+      ],
+      "groupName": "Terraform-Modules",
+      "separateMajorMinor": false
+    }
+  ],
+  "helm-values": {
+    "fileMatch": ["(^|/).*values.yaml$","(^|/).*values.yaml.tpl$","(^|/).*values.tpl$"]
+  }
+}
