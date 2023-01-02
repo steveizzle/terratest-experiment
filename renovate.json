@@ -1,6 +1,7 @@
 {
   "extends": ["config:base",":disableDependencyDashboard"],
   "labels": ["renovate"],
+  "loglevel": "debug",
   "enabled": true,
   "enabledManagers": ["terraform"],
   "packageRules": [
