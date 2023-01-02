@@ -1,0 +1,23 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: vault-cli-delete-secret
+spec:
+  ttlSecondsAfterFinished: 5
+  template:
+    spec:
+      containers:
+      - command:
+        - vault
+        - kv
+        - delete
+        - secret/test
+        image: vault
+        name: vault-cli
+        env:
+          - name: "VAULT_TOKEN"
+            value:  "root"
+          - name: "VAULT_ADDR"
+            value: "http://vault.default:8200"
+      restartPolicy: Never
+

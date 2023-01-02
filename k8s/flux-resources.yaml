@@ -16,18 +16,19 @@ spec:
     - location: "home"
       path: ".ssh/id_rsa"
       secretRef:
-        name: deploy-key-tf
-        key: id_ecdsa
+        name: ssh-key
+        key: id_rsa
     - location: "home"
       path: ".ssh/known_hosts"
       secretRef:
-        name: deploy-key-tf
+        name: ssh-key
         key: known_hosts
 
   sourceRef:
     kind: GitRepository
     name: tf-experiment
     namespace: default
+
 ---
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: GitRepository
@@ -43,6 +44,7 @@ spec:
     name: tf-experiment
   timeout: 60s
   url: ssh://git@github.com/steveizzle/terratest-experiment
+
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding

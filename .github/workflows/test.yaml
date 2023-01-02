@@ -1,4 +1,5 @@
 name: Test
+concurrency: "ci"
 on:
   push:
     paths:

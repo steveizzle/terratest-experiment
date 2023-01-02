@@ -1,0 +1,69 @@
+apiVersion: external-secrets.io/v1beta1
+kind: SecretStore
+metadata:
+  name: vault-backend
+spec:
+  provider:
+    vault:
+      server: "http://vault.default:8200"
+      path: "secret"
+      # Version is the Vault KV secret engine version.
+      # This can be either "v1" or "v2", defaults to "v2"
+      version: "v2"
+      auth:
+        # points to a secret that contains a vault token
+        # https://www.vaultproject.io/docs/auth/token
+        tokenSecretRef:
+          name: "vault-token"
+          key: "token"
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: vault-token
+data:
+  token: cm9vdA== # "root"
+
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: vault-cli-create-secret
+spec:
+  template:
+    spec:
+      containers:
+      - command:
+        - vault
+        - kv
+        - put
+        - -mount=secret
+        - test
+        - hello=world
+        image: vault
+        name: vault-cli
+        env:
+          - name: "VAULT_TOKEN"
+            value:  "root"
+          - name: "VAULT_ADDR"
+            value: "http://vault.default:8200"
+      restartPolicy: Never
+
+---
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: vault-test
+spec:
+  refreshInterval: "15s"
+  secretStoreRef:
+    name: vault-backend
+    kind: SecretStore
+  target:
+    name: test-sync
+  data:
+  - secretKey: foobar
+    remoteRef:
+      key: secret/test
+      property: hello
