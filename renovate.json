@@ -5,7 +5,6 @@
   "packageRules": [
     {
       "matchPaths": ["test-cluster/**"],
-      "groupName": "Terraform-Modules",
       "separateMajorMinor": false,
       "automerge": true,
       "ignoreTests": true,
@@ -13,11 +12,9 @@
     },
     {
       "matchPaths": ["prod-cluster/**"],
-      "groupName": "Terraform-Modules",
       "separateMajorMinor": false,
       "automerge": true,
-      "ignoreTests": true,
-      "ignoreUnstable": true
+      "ignoreTests": true
     }
   ],
   "repositories": [
